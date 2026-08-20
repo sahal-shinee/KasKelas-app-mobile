@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- menu_bendahara.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_dashboard"  android:title="Dashboard"  android:icon="@drawable/ic_dashboard" />
+    <item android:id="@+id/nav_siswa"      android:title="Siswa"      android:icon="@drawable/ic_group" />
+    <item android:id="@+id/nav_tagihan"    android:title="Tagihan"    android:icon="@drawable/ic_receipt" />
+    <item android:id="@+id/nav_transaksi"  android:title="Transaksi"  android:icon="@drawable/ic_swap" />
+    <item android:id="@+id/nav_notifikasi" android:title="Notifikasi" android:icon="@drawable/ic_bell" />
+</menu>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Nama Item"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_nama_item"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Jumlah (Rp)"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_jumlah"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" android:text="Tipe" android:textColor="@color/text_secondary" android:textSize="13sp" />
+    <Spinner android:id="@+id/spinner_tipe" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Tanggal (yyyy-MM-dd)"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_tanggal"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="date" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Keterangan (opsional)"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_keterangan"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="textMultiLine" android:minLines="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_primary">
+
+    <!-- Toolbar -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:padding="16dp" android:background="@color/surface">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Riwayat Pembayaran"
+            android:textColor="@color/text_primary" android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Stat Card: Total Tunggakan -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/color_primary"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="20dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Total Tertunggak" android:textColor="#AAFFFFFF"
+                android:textSize="12sp" android:letterSpacing="0.04" />
+
+            <TextView android:id="@+id/tv_total_tunggakan"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Rp 0" android:textColor="#FFFFFF"
+                android:textSize="30sp" android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <!-- Info jumlah tagihan menunggak -->
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <ImageView android:layout_width="14dp" android:layout_height="14dp"
+                    android:src="@drawable/ic_warning" app:tint="#FFCDD2" />
+
+                <TextView android:id="@+id/tv_jumlah_tunggakan"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0 Tagihan Menunggu" android:textColor="#FFCDD2"
+                    android:textSize="12sp" android:layout_marginStart="6dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Shimmer -->
+    <com.facebook.shimmer.ShimmerFrameLayout android:id="@+id/shimmer_layout"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/item_shimmer_tagihan" />
+            <include layout="@layout/item_shimmer_tagihan" />
+            <include layout="@layout/item_shimmer_tagihan" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_pembayaran"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        android:visibility="gone" />
+
+    <!-- Empty State -->
+    <LinearLayout android:id="@+id/empty_state"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:gravity="center"
+        android:orientation="vertical" android:visibility="gone">
+        <ImageView android:layout_width="72dp" android:layout_height="72dp"
+            android:src="@drawable/ic_receipt" app:tint="@color/text_hint" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Belum ada riwayat pembayaran"
+            android:textColor="@color/text_hint" android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Error State -->
+    <LinearLayout android:id="@+id/error_state"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center" android:orientation="vertical"
+        android:padding="24dp" android:visibility="gone">
+        <TextView android:id="@+id/tv_error" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:textColor="@color/text_secondary" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_retry"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Coba Lagi"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+    </LinearLayout>
+
+</LinearLayout>

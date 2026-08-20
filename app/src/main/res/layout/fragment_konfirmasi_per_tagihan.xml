@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_primary">
+
+    <!-- Toolbar -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center_vertical" android:orientation="horizontal"
+        android:padding="14dp" android:background="@color/surface" android:elevation="4dp">
+
+        <ImageButton android:id="@+id/btn_back" android:layout_width="36dp" android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back" app:tint="@color/text_primary" />
+
+        <TextView android:id="@+id/tv_judul_tagihan"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" android:layout_weight="1"
+            android:textColor="@color/text_primary" android:textSize="15sp"
+            android:textStyle="bold" android:maxLines="2" android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- Stat Card: Total Dana + Tunggakan + Progress -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/color_primary" app:cardCornerRadius="16dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- Baris stat: Dana Terkumpul + Tunggakan -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="TOTAL DANA" android:textColor="#AAFFFFFF" android:textSize="10sp"
+                        android:letterSpacing="0.1" />
+                    <TextView android:id="@+id/tv_total_dana"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Rp 0" android:textColor="#FFFFFF"
+                        android:textSize="18sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="TUNGGAKAN" android:textColor="#AAFFFFFF" android:textSize="10sp"
+                        android:letterSpacing="0.1" />
+                    <TextView android:id="@+id/tv_total_tunggakan"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Rp 0" android:textColor="#FFCDD2"
+                        android:textSize="18sp" android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Baris status: lunas + menunggak count -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginTop="12dp">
+
+                <TextView android:id="@+id/tv_lunas_count"
+                    android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="● 0 Lunas"
+                    android:textColor="#A5D6A7" android:textSize="12sp" />
+
+                <TextView android:id="@+id/tv_menunggak_count"
+                    android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="● 0 Menunggak"
+                    android:textColor="#FFCDD2" android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Tombol Tandai Semua Lunas -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_tandai_semua_lunas"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="✓  Tandai Semua Lunas"
+        android:textSize="13sp"
+        app:backgroundTint="@color/color_success"
+        app:cornerRadius="10dp" />
+
+    <!-- Label daftar siswa -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:layout_marginHorizontal="16dp" android:layout_marginTop="14dp"
+        android:layout_marginBottom="4dp">
+
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="Daftar Siswa"
+            android:textColor="@color/text_primary" android:textSize="14sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/tv_summary"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="@color/text_hint" android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Shimmer -->
+    <com.facebook.shimmer.ShimmerFrameLayout android:id="@+id/shimmer_layout"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/item_shimmer_siswa" />
+            <include layout="@layout/item_shimmer_siswa" />
+            <include layout="@layout/item_shimmer_siswa" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <!-- RecyclerView daftar siswa -->
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_siswa_status"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:padding="16dp"
+        android:clipToPadding="false" android:visibility="gone" />
+
+    <!-- Empty -->
+    <LinearLayout android:id="@+id/empty_state"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:gravity="center" android:orientation="vertical" android:visibility="gone">
+        <ImageView android:layout_width="64dp" android:layout_height="64dp"
+            android:src="@drawable/ic_group" app:tint="@color/text_hint" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Semua data contoh"
+            android:textColor="@color/text_hint" android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Error -->
+    <LinearLayout android:id="@+id/error_state"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:gravity="center" android:orientation="vertical" android:visibility="gone">
+        <TextView android:id="@+id/tv_error" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:textColor="@color/text_secondary" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_retry"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Coba Lagi"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+    </LinearLayout>
+
+</LinearLayout>

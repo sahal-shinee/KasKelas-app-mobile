@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_dashboard"  android:title="Dashboard"  android:icon="@drawable/ic_dashboard" />
+    <item android:id="@+id/nav_kas"        android:title="Kas Kelas"  android:icon="@drawable/ic_wallet" />
+    <item android:id="@+id/nav_pembayaran" android:title="Pembayaran" android:icon="@drawable/ic_receipt" />
+    <item android:id="@+id/nav_notifikasi" android:title="Notifikasi" android:icon="@drawable/ic_bell" />
+</menu>

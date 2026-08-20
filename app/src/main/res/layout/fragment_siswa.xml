@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Search Bar -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cari nama siswa..."
+            app:startIconDrawable="@drawable/ic_person"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:imeOptions="actionSearch" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tombol Tambah Siswa -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_tambah_siswa"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="Tambah Siswa"
+            android:textSize="14sp"
+            app:icon="@drawable/ic_group"
+            app:iconGravity="textStart"
+            app:cornerRadius="10dp"
+            app:backgroundTint="@color/color_primary" />
+
+        <!-- Stat Cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                app:cardBackgroundColor="@color/color_primary"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="14dp">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                        android:src="@drawable/ic_group" app:tint="#FFFFFF" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Total Siswa" android:textColor="#CCFFFFFF" android:textSize="11sp"
+                        android:layout_marginTop="4dp" />
+                    <TextView android:id="@+id/tv_total_siswa"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textColor="#FFFFFF" android:textSize="26sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="14dp">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                        android:src="@drawable/ic_check_circle" app:tint="@color/color_primary" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Pengurus" android:textColor="@color/text_secondary"
+                        android:textSize="11sp" android:layout_marginTop="4dp" />
+                    <TextView android:id="@+id/tv_total_pengurus"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="1" android:textColor="@color/text_primary" android:textSize="26sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Filter Status -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:scrollbars="none">
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_semua"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semua"
+                    android:checked="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_lunas"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lunas" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_menunggak"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Menunggak" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_belum"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Belum Bayar" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Manajemen Siswa" android:textColor="@color/text_primary"
+            android:textSize="15sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+
+        <!-- Shimmer & RV -->
+        <com.facebook.shimmer.ShimmerFrameLayout android:id="@+id/shimmer_layout"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/item_shimmer_siswa" />
+                <include layout="@layout/item_shimmer_siswa" />
+                <include layout="@layout/item_shimmer_siswa" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_siswa"
+            android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1" android:layout_marginTop="4dp" android:visibility="gone" />
+
+        <!-- Empty & Error States -->
+        <LinearLayout android:id="@+id/empty_state" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:orientation="vertical" android:padding="32dp" android:visibility="gone">
+            <ImageView android:layout_width="80dp" android:layout_height="80dp"
+                android:src="@drawable/ic_group" app:tint="@color/text_hint" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:text="Belum ada siswa terdaftar"
+                android:textColor="@color/text_hint" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/error_state" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:orientation="vertical" android:padding="32dp" android:visibility="gone">
+            <TextView android:id="@+id/tv_error" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:gravity="center"
+                android:textColor="@color/text_secondary" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_retry"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:text="Coba Lagi"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FAB -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/color_primary"
+        app:tint="@android:color/white"
+        app:elevation="6dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

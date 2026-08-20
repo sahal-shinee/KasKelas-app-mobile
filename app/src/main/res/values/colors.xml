@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary: Biru Navy -->
+    <color name="color_primary">#1A237E</color>
+    <color name="color_primary_variant">#283593</color>
+    <color name="color_primary_light">#E8EAF6</color>
+    <color name="color_secondary">#00897B</color>
+
+    <!-- Status -->
+    <color name="color_success">#2E7D32</color>
+    <color name="color_success_light">#E8F5E9</color>
+    <color name="color_error">#C62828</color>
+    <color name="color_error_light">#FFEBEE</color>
+    <color name="color_warning">#E65100</color>
+    <color name="color_warning_light">#FFF3E0</color>
+
+    <!-- Background -->
+    <color name="bg_primary">#F5F6FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="bg_card">#FFFFFF</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#5C6BC0</color>
+    <color name="text_hint">#9E9E9E</color>
+
+    <!-- Navigation -->
+    <color name="nav_selected">#1A237E</color>
+    <color name="nav_unselected">#9E9E9E</color>
+
+    <color name="border_subtle">#1A000000</color>   <!-- 10% hitam, untuk border halus -->
+    <color name="color_primary_dark">#3D1A8C</color> <!-- versi lebih gelap dari primary -->
+    <color name="bg_secondary">#F5F5F5</color>
+</resources>

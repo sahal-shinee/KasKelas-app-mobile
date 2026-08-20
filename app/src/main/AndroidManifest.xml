@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.kaskelas">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Wajib Android 13+ untuk menampilkan notifikasi -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Wajib agar alarm polling tetap jalan setelah HP restart -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Wajib agar AlarmManager bisa membangunkan device (wakeup) -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Exact alarm — menembus Doze mode (Android 12+ butuh izin ini) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <application
+        android:name=".KasKelasApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KasKelas"
+        android:usesCleartextTraffic="true">
+
+        <!-- Login -->
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Bendahara Main -->
+        <activity
+            android:name=".ui.bendahara.BendaharaMa"
+            android:exported="false" />
+
+        <!-- Siswa Main -->
+        <activity
+            android:name=".ui.siswa.SiswaMa"
+            android:exported="false" />
+
+        <!--
+            FCM Service — akan diaktifkan setelah google-services.json ditambahkan
+            dan Firebase dependency di-uncomment di build.gradle.kts
+
+        <service
+            android:name=".service.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        -->
+
+        <!-- Penerima alarm polling notifikasi setiap 2 menit -->
+        <receiver
+            android:name=".service.NotificationAlarmReceiver"
+            android:exported="false" />
+
+        <!-- Penjadwal ulang alarm setelah HP restart -->
+        <receiver
+            android:name=".service.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
